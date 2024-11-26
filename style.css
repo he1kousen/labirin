@@ -1,0 +1,108 @@
+/* Setel latar belakang halaman agar lebih gelap dan misterius */
+body {
+  background: linear-gradient(180deg, #111 0%, #333 100%); /* Gelap dengan gradasi */
+  color: #fff; /* Teks berwarna putih agar kontras dengan latar belakang */
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative; /* Membuat positioning relative untuk body */
+}
+
+/* Atur elemen container untuk game */
+#mazeCanvas {
+  border: 10px solid #222; /* Border gelap */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 0, 0, 0.7); /* Bayangan agar tampak lebih hidup */
+  background-color: #111; /* Background gelap pada area game */
+  position: relative;
+  z-index: 1; /* Pastikan canvas berada di bawah teks */
+}
+
+/* Style pesan status permainan */
+#message {
+  position: absolute;
+  top: 50%; /* Posisi tengah vertikal */
+  left: 50%; /* Posisi tengah horizontal */
+  transform: translate(-50%, -50%); /* Untuk memastikan elemen benar-benar di tengah */
+  font-size: 32px;
+  font-weight: bold;
+  color: #ff6666; /* Warna merah terang untuk pesan */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Bayangan pada teks untuk kesan menyeramkan */
+  text-align: center;
+  z-index: 2; /* Pastikan pesan berada di atas maze */
+}
+
+/* Teks level */
+#level {
+  position: absolute;
+  top: 5%;
+  left: 10%; /* Posisikan ke kiri */
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+  z-index: 2; /* Pastikan teks level berada di atas maze */
+}
+
+/* Teks score */
+#score {
+  position: absolute;
+  top: 5%;
+  right: 10%; /* Posisikan ke kanan */
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+  z-index: 2; /* Pastikan teks score berada di atas maze */
+}
+
+/* Teks tips */
+#tips {
+  position: absolute;
+  top: 5%; /* Tetap berada di atas, bisa sesuaikan dengan keinginan */
+  left: 50%; /* Posisi tengah horizontal */
+  transform: translateX(-50%); /* Pindahkan ke tengah secara horizontal */
+  font-size: 18px; /* Ukuran font lebih kecil */
+  color: #ff3333; /* Warna merah untuk tips */
+  font-weight: normal;
+  text-align: center; /* Pastikan teks ada di tengah jika ada lebih dari satu kata */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7); /* Bayangan pada teks agar lebih terlihat */
+  z-index: 2; /* Pastikan teks tips berada di atas maze */
+}
+
+
+/* Animasi untuk membuat teks lebih menarik */
+@keyframes pulse {
+  0% {
+      transform: scale(1);
+  }
+  50% {
+      transform: scale(1.1);
+  }
+  100% {
+      transform: scale(1);
+  }
+}
+
+#level, #score {
+  animation: pulse 1.5s infinite ease-in-out; /* Efek berdenyut untuk level dan score */
+}
+
+#tips {
+  animation: pulse 2s infinite ease-in-out; /* Efek berdenyut untuk tips */
+}
+
+/* Menambahkan latar belakang grid yang lebih gelap dan menciptakan kontras */
+canvas {
+  background: url('https://www.transparenttextures.com/patterns/dark-matter.png');
+  background-size: cover;
+}
+
+/* Menambahkan efek overlay pada elemen canvas saat game aktif */
+#mazeCanvas {
+  filter: brightness(0.8);
+}
